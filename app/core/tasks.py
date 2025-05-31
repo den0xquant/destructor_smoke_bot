@@ -3,13 +3,10 @@ import logging
 import sys
 
 from bot import setup_bot
-from config import settings
 from core.serializer import reminder_message
 from db.mongo import get_all_user_stats
-from pymongo import MongoClient
 from taskiq import InMemoryBroker, TaskiqScheduler
 from taskiq.schedule_sources import LabelScheduleSource
-from taskiq_aio_pika import AioPikaBroker
 
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', stream=sys.stdout)
@@ -34,3 +31,4 @@ async def send_reminder_message() -> None:
             text=reminder_message(user_stats),
             disable_notification=True
         )
+        await asyncio.sleep(1)
