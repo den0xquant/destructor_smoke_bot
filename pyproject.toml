@@ -1,0 +1,27 @@
+[project]
+name = "destructor-smoke-bot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiogram>=3.20.0.post0",
+    "asgiref>=3.8.1",
+    "dotenv>=0.9.9",
+    "loguru>=0.7.3",
+    "pydantic>=2.11.5",
+    "pydantic-settings>=2.9.1",
+    "pymongo>=4.13.0",
+    "redis>=6.2.0",
+    "taskiq>=0.11.17",
+    "taskiq-aio-pika>=0.4.2",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+]
+
+[tool.isort]
+profile = "black"
+lines_after_imports = 2
