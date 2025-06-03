@@ -14,5 +14,6 @@ mongo-data/
 mongo-config/
 redis-data/
 
+.env
 .env.*
 celerybeat-schedule
