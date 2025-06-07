@@ -19,16 +19,21 @@ scheduler = TaskiqScheduler(
 )
 
 
-@broker.task(schedule=[{"cron": "* * 20 * *"}])
+@broker.task(schedule=[{"cron": "* * 18 * *"}])
 async def send_reminder_message() -> None:
     """Send reminder messages to all users with their current statistics."""
     bot = setup_bot()
     users = await get_all_user_stats()
 
-    for user_stats in users:
-        await bot.send_message(
-            chat_id=user_stats.user_id,
-            text=reminder_message(user_stats),
-            disable_notification=True
-        )
-        await asyncio.sleep(1)
+    try:
+        for user_stats in users:
+            await bot.send_message(
+                chat_id=user_stats.user_id,
+                text=reminder_message(user_stats),
+                disable_notification=True
+            )
+            await asyncio.sleep(1)
+    except Exception as e:
+        logger.error(str(e))
+    finally:
+        await bot.session.close()
