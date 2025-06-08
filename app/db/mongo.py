@@ -4,7 +4,7 @@ from db.models import UserStats
 from pymongo import AsyncMongoClient
 
 
-client = AsyncMongoClient("localhost:27017", username=settings.MONGO_USER, password=settings.MONGO_PASSWORD)
+client = AsyncMongoClient(f"{settings.MONGODB_HOST}:27017", username=settings.MONGODB_USER, password=settings.MONGODB_PASSWORD)
 db = client["telegram_bot"]
 smokers = db["smokers"]
 

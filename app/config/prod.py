@@ -8,8 +8,9 @@ class ProdSettings(BaseSettings):
     # MongoDB
     MONGODB_NAME: str
     MONGODB_URL: str
-    MONGO_USER: str
-    MONGO_PASSWORD: str
+    MONGODB_USER: str
+    MONGODB_PASSWORD: str
+    MONGODB_HOST: str
 
     class Config:
         env_file = ".env"
